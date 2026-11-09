@@ -158,6 +158,19 @@ test('HEAD errors never contain a body', async () => {
   }
 });
 
+test('Workers-compatible key fetch uses manual redirects and rejects redirect responses', async () => {
+  const jwt = await token();
+  const { response } = await run({ jwt, fetcher: (url, options) => {
+    if (options?.redirect === 'error') throw new TypeError('Workers does not implement redirect error');
+    assert.equal(options.redirect, 'manual');
+    return Response.json({ keys: [jwk] });
+  } });
+  assert.equal(response.status, 200);
+  const redirected = await run({ jwt, fetcher: () => new Response(null, { status: 302, headers: { Location: 'https://untrusted.example.test' } }) });
+  assert.equal(redirected.response.status, 403);
+  assert.deepEqual(redirected.reads, []);
+});
+
 test('missing JWT fails closed before accessing KV', async () => {
   assert.equal(typeof onRequest, 'function', 'onRequest must exist');
   const { response, reads, fetches } = await run();

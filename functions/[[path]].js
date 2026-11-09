@@ -37,7 +37,7 @@ async function authorized(request, env) {
     const aud = typeof claims.aud === 'string' ? [claims.aud] : claims.aud;
     if (!Array.isArray(aud) || !aud.every(a => typeof a === 'string') || !aud.some(a => audiences.includes(a))) return false;
     if (typeof claims.email !== 'string' || !/^[^@\s]+@procoffeegear\.com$/i.test(claims.email)) return false;
-    const response = await fetch(`${issuer}/cdn-cgi/access/certs`, { redirect: 'error' });
+    const response = await fetch(`${issuer}/cdn-cgi/access/certs`, { redirect: 'manual' });
     if (!response.ok) return false;
     const { keys } = await response.json();
     if (!Array.isArray(keys)) return false;
