@@ -1,0 +1,11 @@
+.env*
+.dev.vars*
+raw/
+data.json
+scorecard*.html
+widget.html
+credentials
+credentials.*
+credentials/
+node_modules/
+.wrangler/

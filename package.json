@@ -1,0 +1,9 @@
+{
+  "name": "pcg-leadership-report",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "build": "mkdir -p public"
+  }
+}

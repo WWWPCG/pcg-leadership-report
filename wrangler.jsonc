@@ -1,0 +1,16 @@
+{
+  "name": "pcg-leadership-report",
+  "pages_build_output_dir": "./public",
+  "compatibility_date": "2026-11-09",
+  "kv_namespaces": [
+    {
+      "binding": "REPORTS",
+      "id": "4d9e36229b08496ea8d2b4b58fd4d4b0",
+      "preview_id": "4d9e36229b08496ea8d2b4b58fd4d4b0"
+    }
+  ],
+  "vars": {
+    "ACCESS_ISSUER": "https://wes-34f.cloudflareaccess.com",
+    "ACCESS_AUD": "0527185cfdd84e733db7b57f9bfc4337ce43959f2167922567fb5bf0f0323636,5585bd242b34de102b1c7227e1396e3d09f42441d19f664000f57afd0fac2c3c"
+  }
+}
